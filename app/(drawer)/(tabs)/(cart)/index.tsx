@@ -30,7 +30,7 @@ export default function CartScreen() {
         </Text>
         <Button
           title="Browse Products"
-          onPress={() => router.push('/')}
+          onPress={() => router.push('/(drawer)/(tabs)/(home)')}
           style={styles.browseButton}
         />
       </View>

@@ -1,11 +1,11 @@
-import { useColorScheme } from '@/hooks/use-color-scheme';
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { useColorScheme } from "@/hooks/use-color-scheme";
+import { Tabs } from "expo-router";
+import React from "react";
 
-import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useCart } from '@/context/cart-context';
+import { HapticTab } from "@/components/haptic-tab";
+import { IconSymbol } from "@/components/ui/icon-symbol";
+import { Colors } from "@/constants/theme";
+import { useCart } from "@/context/cart-context";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -16,10 +16,11 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
         headerShown: true,
         tabBarButton: HapticTab,
-      }}>
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
@@ -29,24 +30,37 @@ export default function TabLayout() {
       <Tabs.Screen
         name="(home)"
         options={{
-          title: 'Medusa Store',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-          headerShown: false, // Let the home stack manage its own headers
+          title: "Medusa Store",
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={28} name="house.fill" color={color} />
+          ),
+          headerShown: false, 
         }}
       />
       <Tabs.Screen
         name="(cart)"
         options={{
-          title: 'Cart',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="cart.fill" color={color} />,
+          title: "Cart",
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={28} name="cart.fill" color={color} />
+          ),
           tabBarBadge: itemCount > 0 ? itemCount : undefined,
           tabBarBadgeStyle: {
-            backgroundColor: Colors[colorScheme ?? 'light'].tint,
+            backgroundColor: Colors[colorScheme ?? "light"].tint,
           },
-          headerShown: false, // Let the cart stack manage its own headers
+          headerShown: false, 
+        }}
+      />
+      <Tabs.Screen
+        name="(account)"
+        options={{
+          title: "Account",
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={28} name="person.fill" color={color} />
+          ),
+          headerShown: false,
         }}
       />
     </Tabs>
   );
 }
-
